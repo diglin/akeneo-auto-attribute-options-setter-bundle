@@ -8,19 +8,12 @@ This bundle ensure that attribute options are created automatically when importi
 
 `composer require niji/auto-attribute-options-setter-bundle`
 
-- In your app/AppKernel.php add a line to enable the bundle:
+- In your bundles.php add a line to enable the bundle:
    
 ```php
-public function registerProjectBundles() {
-  return [
-      // your app bundles should be registered here,
-      .../...
-      new Niji\AutoAttributeOptionsSetterBundle\AutoAttributeOptionsSetterBundle(),
-      .../...
-  ];
-}
+Niji\AutoAttributeOptionsSetterBundle\AutoAttributeOptionsSetterBundle::class => ['all' => true]
 ```
 
 ## Credits
 
-This bundle is brought to you by Niji - http://www.niji.fr.
+This bundle is brought to you by Niji - http://www.niji.fr And Diglin GmbH - https://www.diglin.com

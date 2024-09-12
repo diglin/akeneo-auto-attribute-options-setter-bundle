@@ -2,7 +2,9 @@
 
 namespace Niji\AutoAttributeOptionsSetterBundle\Doctrine\ORM\Repository;
 
-use Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\AttributeOptionRepository as BaseAttributeOptionRepository;
+use Akeneo\Pim\Structure\Bundle\Doctrine\ORM\Repository\AttributeOptionRepository as BaseAttributeOptionRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 
 class AttributeOptionRepository extends BaseAttributeOptionRepository
 {
@@ -15,14 +17,15 @@ class AttributeOptionRepository extends BaseAttributeOptionRepository
      * @return bool
      *    TRUE if the option exists, FALSE otherwise.
      *
-     * @throws \Doctrine\ORM\NoResultException
+     * @throws NoResultException
      *    In case of no results found.
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     *    In case of non unique result found.
+     * @throws NonUniqueResultException
+     *    In case of non-unique result found.
      */
-    public function optionExists($code) {
+    public function optionExists($code): bool
+    {
         if (null === $code) {
-            return FALSE;
+            return false;
         }
 
         list($attributeCode, $optionCode) = explode('.', $code);

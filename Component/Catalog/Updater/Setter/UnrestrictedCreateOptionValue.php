@@ -2,55 +2,38 @@
 
 namespace Niji\AutoAttributeOptionsSetterBundle\Component\Catalog\Updater\Setter;
 
-use Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Saver\BaseSaver;
-use Akeneo\Component\StorageUtils\Factory\SimpleFactoryInterface;
-use Pim\Component\Catalog\Updater\AttributeOptionUpdater;
-use Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Detacher\ObjectDetacher;
+use Akeneo\Pim\Structure\Component\Updater\AttributeOptionUpdater;
+use Akeneo\Tool\Bundle\StorageUtilsBundle\Doctrine\Common\Detacher\ObjectDetacher;
+use Akeneo\Tool\Bundle\StorageUtilsBundle\Doctrine\Common\Saver\BaseSaver;
+use Akeneo\Tool\Component\StorageUtils\Factory\SimpleFactory;
 
 class UnrestrictedCreateOptionValue
 {
-    /** @var SimpleFactoryInterface */
-    protected $optionValueFactory;
-
-  /**
-   * @var ObjectDetacher
-   */
-    protected $objectDetacher;
-
-    /**
-     * UnrestrictedCreateOptionValue constructor.
-     * @param SimpleFactoryInterface $optionValueFactory
-     * @param AttributeOptionUpdater $attributeOptionUpdater
-     * @param BaseSaver $baseSaver
-     */
     public function __construct(
-        SimpleFactoryInterface $optionValueFactory,
-        AttributeOptionUpdater $attributeOptionUpdater,
-        BaseSaver $baseSaver,
-        ObjectDetacher $objectDetacher
-    )
-    {
-        $this->optionValueFactory = $optionValueFactory;
-        $this->attributeOptionUpdater = $attributeOptionUpdater;
-        $this->baseSaver = $baseSaver;
-        $this->objectDetacher = $objectDetacher;
+        private SimpleFactory          $optionValueFactory,
+        private AttributeOptionUpdater $attributeOptionUpdater,
+        private BaseSaver              $baseSaver,
+        private ObjectDetacher         $objectDetacher
+    ) {
+
     }
 
-    /**
-     * @param $codeAttribute
-     * @param $code
-     */
-    public function createOptionValue($codeAttribute, $code) {
+    public function createOptionValue($codeAttribute, $code): void
+    {
         $attributeOptionValue = $this->optionValueFactory->create();
 
+        //todo: make the label locales dynamic by detecting the enabled locales
+        //todo: make the sort_order dynamic by getting the highest sort_order available for this attribute
         $tab = [
             'attribute' => $codeAttribute,
             'code' => $code,
             'sort_order' => 2,
             'labels' => [
-                'de_DE' => $code,
+                'de_CH' => $code,
+                'fr_CH' => $code,
+                'it_CH' => $code,
+                'en_GB' => $code,
                 'en_US' => $code,
-                'fr_FR' => $code,
             ]
         ];
 

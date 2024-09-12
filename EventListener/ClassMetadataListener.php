@@ -18,7 +18,8 @@ class ClassMetadataListener
         $classMetadata = $eventArgs->getClassMetadata();
 
         $entityName = $classMetadata->getName();
-        if ('Pim\Bundle\CatalogBundle\Entity\AttributeOption' === $entityName) {
+        //if ($entityName === 'Pim\Bundle\CatalogBundle\Entity\AttributeOption') {
+        if ($entityName === 'Akeneo\Pim\Structure\Component\Model\AttributeOption') {
             $classMetadata->customRepositoryClassName = 'Niji\AutoAttributeOptionsSetterBundle\Doctrine\ORM\Repository\AttributeOptionRepository';
         }
     }
