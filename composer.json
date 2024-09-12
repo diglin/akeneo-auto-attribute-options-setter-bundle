@@ -1,51 +1,46 @@
-
 {
-  "name": "niji/auto-attribute-options-setter-bundle",
-  "type": "symfony-bundle",
-  "description": "Symfony AutoAttributeOptionsSetterBundle",
-  "keywords": [
-    "Akeneo Attribute Options Creator"
-  ],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Aymeric Simon",
-      "email": "aymeric.simon@niji.fr"
+    "name": "niji/auto-attribute-options-setter-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony AutoAttributeOptionsSetterBundle",
+    "keywords": [
+        "Akeneo Attribute Options Creator"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aymeric Simon",
+            "email": "aymeric.simon@niji.fr"
+        },
+        {
+            "name": "Bertrand Presles",
+            "email": "bertrand.presles@niji.fr"
+        },
+        {
+            "name": "Benjamin Groleau",
+            "email": "benjamin.groleau@niji.fr"
+        },
+        {
+            "name": "Diglin GmbH",
+            "email": "support@diglin.com"
+        }
+    ],
+    "require": {
+        "akeneo/pim-community-dev": "^7.0"
     },
-    {
-      "name": "Bertrand Presles",
-      "email": "bertrand.presles@niji.fr"
+    "config": {
+        "sort-packages": true
     },
-    {
-      "name": "Benjamin Groleau",
-      "email": "benjamin.groleau@niji.fr"
-    }
-  ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/akeneo/pim-community-dev.git",
-      "branch": "master"
-    }
-  ],
-  "require": {
-    "php": "^7.0",
-    "akeneo/pim-community-dev": "^2.3"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "autoload": {
-    "psr-4": {
-      "Niji\\AutoAttributeOptionsSetterBundle\\": ""
+    "autoload": {
+        "psr-4": {
+            "Niji\\AutoAttributeOptionsSetterBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
-    "exclude-from-classmap": [
-      "/Tests/"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Niji\\AutoAttributeOptionsSetterBundle\\Tests\\": "/Tests/"
+    "autoload-dev": {
+        "psr-4": {
+            "Niji\\AutoAttributeOptionsSetterBundle\\Tests\\": "/Tests/"
+        }
     }
-  }
 }
